@@ -125,6 +125,28 @@ class LikeTest extends TestCase
 	}
 	
 	
+	/** @test */
+	
+	public function a_post_knows_how_many_like_it_has(){
+		
+		//given
+			
+		$post = factory(MyCompany\Post::class)->create();
+		
+		$user = factory(MyCompany\User::class)->create();
+		
+		$this->actingAs($user);
+		
+		//when
+				
+		$post->toogleLike();		
+		
+		//then
+		
+		$this->assertEquals(1, $post->likesCount);
+		
+	}
+	
 	
 	
 }
