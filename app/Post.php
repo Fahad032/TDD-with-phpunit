@@ -19,6 +19,13 @@ class Post extends Model
     }
 	
 	
+	public function unlike(){
+		
+		$this->likes()->where(['likeable_id'=> $this->id, 'user_id' => Auth::id()])->delete();
+		
+	}
+	
+	
 	public function likes(){
 		
 		return $this->morphMany(Like::class, 'likeable');
