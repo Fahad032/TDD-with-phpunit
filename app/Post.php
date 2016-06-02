@@ -24,4 +24,10 @@ class Post extends Model
 		return $this->morphMany(Like::class, 'likeable');
 		
 	}
+	
+	public function isLiked(){
+		
+		return !!$this->likes()->count();
+		
+	}
 }

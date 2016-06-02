@@ -40,10 +40,10 @@ class LikeTest extends TestCase
 						
 						]);
 	
+	$this->assertTrue($post->isLiked());	
 		
 	}
 	
-	//$this->assertTrue($post->isLiked());	
 	
 	
 }
