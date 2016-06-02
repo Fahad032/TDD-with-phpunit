@@ -84,6 +84,47 @@ class LikeTest extends TestCase
 	}
 	
 	
+	/** @test */
+	
+	public function a_user_can_toggle_a_post_like_status(){
+		
+		//given
+			
+		$post = factory(MyCompany\Post::class)->create();
+		
+		$user = factory(MyCompany\User::class)->create();
+		
+		$this->actingAs($user);
+		
+		
+		// when user has already liked a post, toggle will unlike it
+		
+		//$post->like();
+		
+		$post->toogleLike();
+		
+		
+		//then
+		
+		//$this->notSeeInDatabase('likeable', [
+
+		$this->seeInDatabase('likeable', [
+						
+				'user_id'		=> $user->id,
+				
+				'likeable_id'	=> $post->id,
+				
+				'likeable_type'	=> get_class($post)
+		]);
+		
+		//$this->assertFalse($post->isLiked());
+
+		$this->assertTrue($post->isLiked());
+		
+		
+	}
+	
+	
 	
 	
 }

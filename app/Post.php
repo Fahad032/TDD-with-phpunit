@@ -32,9 +32,26 @@ class Post extends Model
 		
 	}
 	
+	
 	public function isLiked(){
 		
 		return !!$this->likes()->count();
 		
 	}
+	
+	public function toogleLike(){
+		
+		if($this->isLiked()){
+			
+			return $this->unlike();
+			
+		}
+		
+		return $this->like();
+		
+		
+	}
+	
+	
+	
 }
