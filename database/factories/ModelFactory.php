@@ -37,3 +37,15 @@ $factory->define(MyCompany\Team::class, function (Faker\Generator $faker) {
     ];
 });
 
+
+$factory->define(MyCompany\Post::class, function(Faker\Generator $faker){
+	
+	return [
+		'title' => $faker->sentence,
+		'body'	=> $faker->paragraph,
+		'user_id' => factory(MyCompany\User::class)->create()->id
+	];
+	
+});
+
+
